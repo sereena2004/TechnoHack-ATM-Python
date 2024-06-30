@@ -1,0 +1,152 @@
+import time as t
+user_pin = 1234
+user_balance = 1000
+user_name = "Mrs. Sereena"
+print("Welcome to your bank account", user_name, end = "\n")
+choice = 10
+while (True):
+    print("\t\t1. Logout and Exit")
+    print("\t\t2. View Account Balance")
+    print("\t\t3. Withdraw Cash")
+    print("\t\t4. Deposit Cash")
+    
+    choice = int(input("Enter number to proceed > "))
+    print("\n")
+
+    if choice == 1:
+        print("Exiting...")
+        t.sleep(2)
+        print("You have been logged out. Thank you!\n")
+        break
+
+    elif choice in (1,2,3,4):
+        num_of_tries = 3
+        while (num_of_tries!=0):
+            input_pin = int(input("Please enter your 4-digit PIN > "))
+
+            if input_pin == user_pin:
+                print("Account auhtorized!\n")
+
+                if choice == 2:
+                    print("Loading Account Balance...")
+                    t.sleep(1.5)
+                    print("Your current balance is Rs.", user_balance, end = "\n")
+                    break
+                elif choice == 3:
+                    print("Opening Cash Withdrawal...")
+                    t.sleep(1.5)
+
+                    while(True):
+                        withdraw_amt = float(input("Enter the amount you wish to withdraw > "))
+
+                        if withdraw_amt>user_balance:
+                            print("Can't withdraw Rs.", withdraw_amt)
+                            print("Please enter a lower amount!")
+                            continue
+
+                        else:
+                            print("Withdrawing Rs.", withdraw_amt)
+                            confirm = input("Confirm? Y/N > ")
+                            if confirm in ('Y', 'y'):
+                                user_balance-=withdraw_amt
+                                print("Amount withdrawn - Rs.", withdraw_amt)
+                                print("Remaining balance - Rs.", user_balance, end = "\n")
+                                break
+
+                            else:
+                                print("Cancelling transaction...")
+                                t.sleep(1)
+                                print("Transaction Cancelled!\n")
+                                break
+
+                    break
+
+                elif choice == 4:
+                    print("Loading Cash Deposit...")
+                    t.sleep(1.5)
+
+                    deposit_amt = float(input("Enter the amount you wish to deposit > "))
+                    print("Depositing Rs.", deposit_amt)
+                    confirm = input("Confirm? Y/N > ")
+                    if confirm in ('Y', 'y'):
+                        user_balance+=deposit_amt
+                        print("Amount deposited - Rs.", deposit_amt)
+                        print("Updated balance - Rs.", user_balance, end = "\n")
+                    else:
+                        print("Cancelling transaction...")
+                        t.sleep(1)
+                        print("Transaction Cancelled!\n")
+
+                    break
+            
+        else:
+            print("Exiting...")
+            t.sleep(2)
+            print("You have been logged out. Thank you!\n")
+            break
+
+
+    else:
+        print("Invalid input!")
+        print("\t\t1. Enter 1 to Logout and Exit!")
+        continue
+
+
+
+Welcome to your bank account Mrs. Sereena
+		1. Logout and Exit
+		2. View Account Balance
+		3. Withdraw Cash
+		4. Deposit Cash
+Enter number to proceed > 2
+
+
+Please enter your 4-digit PIN > 1234
+Account auhtorized!
+
+Loading Account Balance...
+Your current balance is Rs. 1000
+		1. Logout and Exit
+		2. View Account Balance
+		3. Withdraw Cash
+		4. Deposit Cash
+Enter number to proceed > 3
+
+
+Please enter your 4-digit PIN > 1234
+Account auhtorized!
+
+Opening Cash Withdrawal...
+Enter the amount you wish to withdraw > 200
+Withdrawing Rs. 200.0
+Confirm? Y/N > y
+Amount withdrawn - Rs. 200.0
+Remaining balance - Rs. 800.0
+		1. Logout and Exit
+		2. View Account Balance
+		3. Withdraw Cash
+		4. Deposit Cash
+Enter number to proceed > 4
+
+
+Please enter your 4-digit PIN > 1234
+Account auhtorized!
+
+Loading Cash Deposit...
+Enter the amount you wish to deposit > 1230
+Depositing Rs. 1230.0
+Confirm? Y/N > y
+Amount deposited - Rs. 1230.0
+Updated balance - Rs. 2030.0
+		1. Logout and Exit
+		2. View Account Balance
+		3. Withdraw Cash
+		4. Deposit Cash
+Enter number to proceed > 1
+
+
+Exiting...
+You have been logged out. Thank you!
+
+
+=== Code Execution Successful ===
